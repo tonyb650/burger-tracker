@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tonyb650.burgertracker.models.Burger;
 import com.tonyb650.burgertracker.services.BurgerService;
 
+// This file not actually used for the assignment, but used for testing with Postman
+
 @RestController
 public class BurgersApi {
 	private final BurgerService burgerService;

@@ -26,7 +26,6 @@ public class BurgerController {
 		return "redirect:/burgers";
 	}
 	
-
 	@GetMapping("/burgers")
 	public String main(@ModelAttribute("burger") Burger burger, Model model) {
 		List<Burger> burgerList = burgerService.allBurgers();
@@ -41,8 +40,9 @@ public class BurgerController {
 			List<Burger> burgerList = burgerService.allBurgers();
 			model.addAttribute("allBurgers", burgerList);
 			return "index.jsp";
-		} else
-		burgerService.createBurger(burger);
-		return "redirect:/burgers";
+		} else {
+			burgerService.createBurger(burger);
+			return "redirect:/burgers";
+		}
 	}
 }
