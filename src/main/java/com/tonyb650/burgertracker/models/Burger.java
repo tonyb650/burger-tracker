@@ -34,17 +34,17 @@ public class Burger {
 	// private Integer numberOfPages;
 	
 	
-	@NotBlank
+	@NotBlank (message="Burger name cannot be blank")
 	@Size(min = 5, max=200, message="Burger name must be between 5 and 200 characters")
 	private String burgerName;
 	
-	@NotEmpty
+	@NotEmpty  (message="Restaurant name cannot be empty")
 	@Size(min = 5, max=200, message="Restaurant name must be between 5 and 200 characters")
 	private String restaurantName;
 	
 	@NotNull (message="Rating is required")
-//	@Min(1)
-//	@Max(5)
+	@Min(1)
+	@Max(5)
 	private Integer rating;
 	
 	@NotNull (message="Please add some notes")

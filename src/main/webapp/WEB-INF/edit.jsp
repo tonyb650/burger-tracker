@@ -3,38 +3,19 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isErrorPage="true" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Burger Tracker</title>
+	<title>Edit A Burger</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<div class="container">
-		<h1>Burger Tracker</h1>
-		<table class="table border">
-			<thead>
-				<tr>
-					<th>Burger Name</th>
-					<th>Restaurant Name</th>
-					<th>Rating (out of 5)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="burger" items="${allBurgers}">
-					<tr>
-						<td><a href="/burgers/${burger.id}/edit"><c:out value="${ burger.burgerName }"/></a></td>
-						<td><c:out value="${ burger.restaurantName }"/></td>
-						<td><c:out value="${ burger.rating }"/></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
 		<div class="row">
-			<h1>Add a NEW Burger</h1>
-			<form:form action="/burgers" method="post" modelAttribute="burger">
+			<h1>Edit a burger</h1>
+			<form:form action="/burgers/${ burger.id }" method="post" modelAttribute="burger">
+				<input type="hidden" name="_method" value="put" />
 				<div><form:errors path="burgerName" class="form-label text-danger"/></div>
 				<div><form:errors path="restaurantName" class="form-label text-danger"/></div>
 				<div><form:errors path="rating" class="form-label text-danger"/></div>
@@ -47,9 +28,10 @@
 				<form:input path="rating" class="form-control" name="rating" id="rating" type="number" min="1" max="5"/>
 				<form:label path="burgerNotes" class="form-label" for="burgerNotes">Notes</form:label>
 				<form:textarea path="burgerNotes" class="form-control" name="burgerNotes" id="burgerNotes" rows="4"></form:textarea>
-				<input type="submit" class="btn btn-secondary" value="Submit"/>
+				<input type="submit" class="btn btn-secondary" value="Update"/>
 			</form:form>
 		</div>
 	</div>
+
 </body>
 </html>
